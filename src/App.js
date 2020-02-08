@@ -5,31 +5,42 @@ import ImageCard from "./components/ImageCard";
 import imageArray from "./imageArray.json";
 import Scores from "./components/Scores";
 
-
+let selected = [];
+let currentScore = 0;
+let hiScore = 0;
 
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            imageArray: imageArray,
-            hiScore: Scores.hiScore,
-            score: Scores.currentScore
+            imageArray: imageArray
         };
     }
 
     // function called when an image is selected:
-    
+
     click = id => {
 
         //pushes the selected image to 'selected' array:
-        const selected = [];
         for (let i = 0; i < imageArray.length; i++) {
+            // if the id of the selected image equals the id at the current index...
             if (imageArray[i].id === id) {
-                selected.push(imageArray[i])
+                // ...then check whether it already exists in the array:
+                if (selected.includes(imageArray[i])) {
+                    // if it does, then (TODO) check the current score against the high score, switching if necessary, and reset the game:
+                    if (currentScore > hiScore) {
+                        hiScore = currentScore;
+                    }
+                    currentScore = 0;
+                    selected = [];
+                    alert("NO");
+                } else {
+                    currentScore ++;
+                    selected.push(imageArray[i]);
+                }
             }
         }
-        console.log(selected)
 
         // TODO: if statement checking whether the selected image has already been clicked:
 
@@ -66,7 +77,10 @@ class App extends Component {
             <Wrapper>
                 <h1 className="title">Images</h1>
 
-                <Scores />
+                <Scores 
+                    currentScore={currentScore}
+                    hiScore={hiScore}
+                />
 
                 {this.state.imageArray.map(image => (
 
