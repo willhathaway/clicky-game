@@ -36,13 +36,13 @@ class App extends Component {
                     // if it does, then (TODO) check the current score against the high score, switching if necessary, and reset the game:
                     if (currentScore > hiScore) {
                         this.setState({
-                        hiScore: currentScore
-                    })
+                            hiScore: currentScore
+                        })
                     }
                     this.setState({
-                    currentScore: 0,
-                    selected: []
-                })
+                        currentScore: 0,
+                        selected: []
+                    })
                     alert("NO");
                 } else {
                     this.setState({
@@ -58,7 +58,7 @@ class App extends Component {
         // shuffles the array:
         const Images = this.shuffle(imageArray);
         this.setState({ Images });
-    
+
     }
 
     // Fisher-Yates shuffle function to shuffle the array of images (called in 'click' function). taken from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -66,44 +66,45 @@ class App extends Component {
     shuffle = array => {
 
         var currentIndex = array.length, temporaryValue, randomIndex;
-      
+
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
         }
-      
+
         return array;
-      }
+    }
 
     render() {
         return (
             <Wrapper>
                 <h1 className="title">Images</h1>
 
-                <Scores 
+                <Scores
                     currentScore={this.state.currentScore}
                     hiScore={this.state.hiScore}
                 />
+                
+                
+                    {this.state.imageArray.map(image => (
 
-                {this.state.imageArray.map(image => (
+                        <ImageCard
+                            id={image.id}
+                            key={image.id}
+                            image={image.image}
+                            click={this.click}
+                        />
 
-                    <ImageCard
-                        id={image.id}
-                        key={image.id}
-                        image={image.image}
-                        click={this.click}
-                    />
-
-                ))}
-
+                    ))}
+               
             </Wrapper>
         )
     }
