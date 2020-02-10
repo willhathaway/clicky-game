@@ -5,39 +5,50 @@ import ImageCard from "./components/ImageCard";
 import imageArray from "./imageArray.json";
 import Scores from "./components/Scores";
 
-let selected = [];
-let currentScore = 0;
-let hiScore = 0;
+
 
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            imageArray: imageArray
+            imageArray: imageArray,
+            selected: [],
+            currentScore: 0,
+            hiScore: 0
         };
     }
 
     // function called when an image is selected:
 
     click = id => {
-
+        let { imageArray, selected, currentScore, hiScore } = this.state;
         //pushes the selected image to 'selected' array:
         for (let i = 0; i < imageArray.length; i++) {
             // if the id of the selected image equals the id at the current index...
             if (imageArray[i].id === id) {
+                console.log('selected', selected)
                 // ...then check whether it already exists in the array:
                 if (selected.includes(imageArray[i])) {
+                    // console.log(imageArray)
+                    console.log('immage a i', imageArray[i])
+
                     // if it does, then (TODO) check the current score against the high score, switching if necessary, and reset the game:
                     if (currentScore > hiScore) {
-                        hiScore = currentScore;
+                        this.setState({
+                        hiScore: currentScore
+                    })
                     }
-                    currentScore = 0;
-                    selected = [];
+                    this.setState({
+                    currentScore: 0,
+                    selected: []
+                })
                     alert("NO");
                 } else {
-                    currentScore ++;
-                    selected.push(imageArray[i]);
+                    this.setState({
+                        selected: [...selected, imageArray[i]],
+                        currentScore: (currentScore + 1)
+                    })
                 }
             }
         }
@@ -78,8 +89,8 @@ class App extends Component {
                 <h1 className="title">Images</h1>
 
                 <Scores 
-                    currentScore={currentScore}
-                    hiScore={hiScore}
+                    currentScore={this.state.currentScore}
+                    hiScore={this.state.hiScore}
                 />
 
                 {this.state.imageArray.map(image => (
