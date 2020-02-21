@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Wrapper from "./components/Wrapper";
+
+// project imports:
 import ImageCard from "./components/ImageCard";
 import imageArray from "./imageArray.json";
 import Scores from "./components/Scores";
+import Wrapper from "./components/Wrapper";
 
 
 
 class App extends Component {
 
+    // constructor for storing local class variables:
     constructor(props) {
         super(props);
         this.state = {
@@ -19,9 +22,9 @@ class App extends Component {
         };
     }
 
-    // function called when an image is selected:
-
+    // function called when an image is selected (with id argument):
     click = id => {
+        // variables declared referring to state:
         let { imageArray, selected, currentScore, hiScore } = this.state;
         //pushes the selected image to 'selected' array:
         for (let i = 0; i < imageArray.length; i++) {
@@ -43,7 +46,7 @@ class App extends Component {
                         currentScore: 0,
                         selected: []
                     })
-                    alert("NO");
+                    alert("Try again!");
                 } else {
                     this.setState({
                         selected: [...selected, imageArray[i]],
@@ -83,6 +86,7 @@ class App extends Component {
         return array;
     }
 
+    // render returns the HTML structure of the page:
     render() {
         return (
             <Wrapper>
@@ -93,9 +97,7 @@ class App extends Component {
                     hiScore={this.state.hiScore}
                 />
                 
-                
                     {this.state.imageArray.map(image => (
-
                         <ImageCard
                             id={image.id}
                             key={image.id}
