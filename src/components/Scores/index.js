@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 
+// Scores component returns the current score and the high score:
 function Scores(props) {
     return (
         <div className="card" id="scoresDiv">
