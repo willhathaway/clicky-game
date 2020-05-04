@@ -8,6 +8,8 @@ The game is made harder by the images reshuffling on each click.
 
 See if you can get to 12!
 
+![clicky-game-image](https://github.com/willhathaway/clicky-game/blob/master/Screen%20Shot%202020-05-04%20at%209.40.10%20AM.png)
+
 ## Getting started:
 
 To view the deployed game, visit [https://clicky-game-wh.herokuapp.com/].
