@@ -7,8 +7,6 @@ import imageArray from "./imageArray.json";
 import Scores from "./components/Scores";
 import Wrapper from "./components/Wrapper";
 
-
-
 class App extends Component {
 
     // constructor for storing local class variables:
@@ -96,17 +94,17 @@ class App extends Component {
                     currentScore={this.state.currentScore}
                     hiScore={this.state.hiScore}
                 />
-                
-                    {this.state.imageArray.map(image => (
-                        <ImageCard
-                            id={image.id}
-                            key={image.id}
-                            image={image.image}
-                            click={this.click}
-                        />
 
-                    ))}
-               
+                {this.state.imageArray.map(image => (
+                    <ImageCard
+                        id={image.id}
+                        key={image.id}
+                        image={image.image}
+                        click={this.click}
+                    />
+
+                ))}
+
             </Wrapper>
         )
     }
