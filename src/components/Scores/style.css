@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 #scoresDiv {
     background: rgb(57, 57, 80);
     border-radius: 2px;
@@ -14,4 +16,5 @@ p {
     float: left;
     font-weight: 500;
     margin-left: 10px;
+    font-family: 'Righteous', cursive;
 }
