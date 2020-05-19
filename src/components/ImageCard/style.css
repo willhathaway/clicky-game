@@ -14,9 +14,4 @@
     max-width: 100%;
     height: 200px;
   }
-
-  .card:hover {
-      transform: scale(1.01);
-      transition: 1s ease;
-  }
   
