@@ -88,7 +88,7 @@ class App extends Component {
     render() {
         return (
             <Wrapper>
-                <h1 className="title">Images</h1>
+                <h1 className="title">Art Guessing Game</h1>
 
                 <Scores
                     currentScore={this.state.currentScore}
